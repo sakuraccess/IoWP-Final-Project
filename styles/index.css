@@ -1,5 +1,5 @@
 /* Body and general layout styles */
-body {
+#body-except-chart {
     font-family: Arial, sans-serif;
     background-color: #f5f5f5;
     margin: 0;
@@ -11,13 +11,6 @@ body {
     min-height: 100vh;
 }
 
-.container {
-    width: 100%;
-    max-width: 800px;
-    background-color: #fff;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-}
 
 h1 {
     color: #007BFF;
@@ -32,7 +25,9 @@ form {
     align-items: center;
 }
 
-label, select, input {
+label,
+select,
+input {
     width: 100%;
     padding: 10px;
     margin-bottom: 10px;
@@ -68,9 +63,31 @@ button {
     text-decoration: underline;
 }
 
-#startYearInput, #endYearInput {
+#startYearInput,
+#endYearInput {
     width: 60px;
     padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+/* Year range container styles */
+#year-range-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#year-range-container label {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+#year-range-container input {
+    width: 100px;
+    /* 调整输入框的宽度 */
+    padding: 10px;
+    margin-bottom: 10px;
     border: 1px solid #ccc;
     border-radius: 3px;
 }
@@ -80,7 +97,33 @@ button {
     padding: 5px;
 }
 
+
 #chart-container {
     padding: 20px;
     display: none;
+}
+
+#chart {
+    width: 100%;
+}
+
+.input-with-button {
+    display: flex;
+    align-items: center;
+}
+
+.input-with-button input {
+    flex: 1;
+    /* 让输入框占据剩余的可用空间 */
+    margin-right: 10px;
+    /* 添加右侧间距 */
+}
+
+.input-with-button button {
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    padding: 10px 20px;
 }

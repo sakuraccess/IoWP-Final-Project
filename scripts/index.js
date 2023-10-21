@@ -189,3 +189,12 @@ document.getElementById("to-emp").addEventListener('click', function (event) {
     window.location.href = "./emp.html";
 });
 
+// 获取输入框和按钮元素
+const municipalityInput = document.getElementById("municipality-name");
+const fillWholeCountryButton = document.getElementById("fillWholeCountry");
+
+// 添加按钮点击事件处理程序
+fillWholeCountryButton.addEventListener("click", function () {
+    // 自动填充输入框
+    municipalityInput.value = "whole country";
+});

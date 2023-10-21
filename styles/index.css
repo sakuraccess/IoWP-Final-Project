@@ -1,0 +1,32 @@
+.range-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+input[type="range"] {
+    width: 20%;
+}
+
+label,
+select {
+    display: block;
+    margin-bottom: 10px;
+}
+
+#copyright-notice {
+    background-color: #ce1414;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+body {
+    background-image: url("../src/background-1.jpg");
+    background-size: cover;
+}
+
+.chart {
+    background-color: #f0f0f0;
+    padding: 10px;
+}

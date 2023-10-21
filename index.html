@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://unpkg.com/frappe-charts@latest"></script>
+
+    <title>Statistic portal</title>
+    <link rel="stylesheet" type="text/css" href="./styles/index.css">
+
+</head>
+
+<body>
+
+    <h1>Population by area, main type of activity, sex, age and year, 1987-2021</h1>
+    <h2>Please select the information you want to retrieve, the results will be displayed in the form of a chart.</h2>
+
+    <div id="copyright-notice">
+        All data on the website, Statistics Finland Data are downloaded from Statistics Finland's api with the licence
+        <a href="https://creativecommons.org/licenses/by/4.0/deed.en" target="_blank"> CC BY 4.0</a>
+    </div>
+
+    <form id="select-data-form">
+        <label for="municipality-name">1. Enter the name of a Finnish municipality ("whole country" means the whole of
+            Finland):</label>
+        <input type="text" id="municipality-name" />
+
+        <label for="main-activity">2. Choose category:</label>
+        <select id="main-activity">
+            <option value="SSS">Total</option>
+            <option value="11+12">Labour force</option>
+            <option value="11">Employed</option>
+            <option value="12">Unemployed</option>
+            <option value="21-99">Persons outside the labour force</option>
+            <option value="21">0-14 years old</option>
+            <option value="22">Students, pupils</option>
+            <option value="25">Conscripts, persons in non-military service</option>
+            <option value="24+29">Pensioners</option>
+            <option value="99">Other persons outside the labour force</option>
+        </select>
+
+        <label for="sex">3. Select gender:</label>
+        <select id="sex">
+            <option value="SSS">Total</option>
+            <option value="1">Males</option>
+            <option value="2">Females</option>
+        </select>
+
+        <label for="age">4. Select age group:</label>
+        <select id="age">
+            <option value="SSS">Total</option>
+            <option value="0-17">0 - 17</option>
+            <option value="18-64">18 - 64</option>
+            <option value="65-">65 -</option>
+        </select>
+
+        <p>5. Select the year range you want to view(1987 - 2021):</p>
+        <div class="range-container">
+            <label for="startYearInput">Enter start year:</label>
+            <input type="number" id="startYearInput" min="1987" max="2021" step="1" value="1987">
+        </div>
+
+        <div class="range-container">
+            <label for="endYearInput">Enter end year:</label>
+            <input type="number" id="endYearInput" min="1987" max="2021" step="1" value="2021">
+        </div>
+
+        <button type="submit" id="submit-data">View the chart</button><br><br>
+
+        <button id="to-map" style="display: none;">Go to map view of the whole country</button>
+        <button id="to-emp">Go to the national employment rate distribution map</button>
+    </form>
+
+    <div id="chart-container" style="display: none;">
+        <button id="download-image">Download Image</button>
+        <div id="chart"></div>
+    </div>
+
+    <script src="./scripts/index.js"></script>
+</body>
+
+</html>

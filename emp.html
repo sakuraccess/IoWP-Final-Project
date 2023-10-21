@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+    <link rel="stylesheet" type="text/css" href="./styles/emp.css">
+
+    <title>Maps</title>
+</head>
+
+<body>
+    <h1>Employment situation in municipalities across Finland</h1>
+
+    <form>
+        <h2>Please first select the year for which you want to view data.</h2>
+        <h2>Then you can drag and click on the map to select the municipality.</h2>
+        <div class="range-container">
+            <label for="year-input">1. Set the year in which the map displays data(1987 - 2021)</label>
+            <input type="number" id="year-input" min="1987" max="2021" step="1" value="2021">
+            <button type="submit" id="set-year">Set</button>
+        </div><br>
+
+        <div>
+            <label for="search-input">2. Search a municipality by name(Optional)</label>
+            <input type="text" id="city-input">
+            <button typr="submit" id="submit-city">Search</button>
+        </div><br>
+
+        <button id="to-index">Go back to main page</button>
+        <!-- <button id="to-map">Return to normal data map</button> -->
+    </form>
+
+    <div id="map"></div>
+
+    <script src="./scripts/emp.js"></script>
+</body>
+
+</html>

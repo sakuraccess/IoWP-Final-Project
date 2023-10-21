@@ -1,0 +1,9 @@
+#map {
+    height: 80vh;
+    width: 95%;
+}
+
+body {
+    background-image: url("../src/background-3.jpg");
+    background-size: cover;
+}

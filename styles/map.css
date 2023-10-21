@@ -1,0 +1,15 @@
+#map {
+    height: 70vh;
+    width: 95%;
+}
+
+.range-container {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+}
+
+body {
+    background-image: url("../src/background-2.jpg");
+    background-size: cover;
+}

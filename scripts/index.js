@@ -175,15 +175,6 @@ document.getElementById('select-data-form').addEventListener('submit', async fun
     document.getElementById('download-image').addEventListener('click', function (event) {
         event.preventDefault();
         chart.export();
-        // 创建一个链接元素
-        // const downloadLink = document.createElement('a');
-        // downloadLink.href = imageUrl;
-    
-        // // 设置下载属性为文件名
-        // downloadLink.download = 'your-image-filename.jpg';
-    
-        // // 模拟点击链接来触发下载
-        // downloadLink.click();
     });
     
 });

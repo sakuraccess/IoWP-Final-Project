@@ -1,32 +1,86 @@
-.range-container {
+/* Body and general layout styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
 }
 
-input[type="range"] {
-    width: 20%;
+.container {
+    width: 100%;
+    max-width: 800px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
-label,
-select {
-    display: block;
+h1 {
+    color: #007BFF;
+    text-align: center;
+    padding: 20px;
+}
+
+form {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+label, select, input {
+    width: 100%;
+    padding: 10px;
     margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
 }
 
 #copyright-notice {
     background-color: #ce1414;
     color: #fff;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
     padding: 10px;
     border-radius: 5px;
 }
 
-body {
-    background-image: url("../src/background-1.jpg");
-    background-size: cover;
+#copyright-notice a {
+    color: #007BFF;
+    text-decoration: none;
 }
 
-.chart {
-    background-color: #f0f0f0;
-    padding: 10px;
+#copyright-notice a:hover {
+    text-decoration: underline;
+}
+
+#startYearInput, #endYearInput {
+    width: 60px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+#year-range-container p {
+    margin: 0;
+    padding: 5px;
+}
+
+#chart-container {
+    padding: 20px;
+    display: none;
 }

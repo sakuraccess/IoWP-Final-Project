@@ -20,7 +20,7 @@
     <div id="copyright-notice">
         All data on the website, Statistics Finland Data are downloaded from Statistics Finland's api with the licence
         <a href="https://creativecommons.org/licenses/by/4.0/deed.en" target="_blank"> CC BY 4.0</a>
-    </div>
+    </div><br>
 
     <form id="select-data-form">
         <label for="municipality-name">1. Enter the name of a Finnish municipality ("whole country" means the whole of
@@ -57,15 +57,20 @@
         </select>
 
         <p>5. Select the year range you want to view(1987 - 2021):</p>
-        <div class="range-container">
-            <label for="startYearInput">Enter start year:</label>
+        <label for="year-range-container" >Enter start year and end year:</label>
+        <div id="year-range-container" class="range-container">
+            <!-- <label for="startYearInput">Enter start year:</label> -->
+            
+            <!-- <label for="endYearInput">Enter end year:</label> -->
+            
             <input type="number" id="startYearInput" min="1987" max="2021" step="1" value="1987">
-        </div>
-
-        <div class="range-container">
-            <label for="endYearInput">Enter end year:</label>
+            <p>to</p>
             <input type="number" id="endYearInput" min="1987" max="2021" step="1" value="2021">
         </div>
+
+        <!-- <div class="range-container">
+            
+        </div> -->
 
         <button type="submit" id="submit-data">View the chart</button><br><br>
 
@@ -73,7 +78,7 @@
         <button id="to-emp">Go to the national employment rate distribution map</button>
     </form>
 
-    <div id="chart-container" style="display: none;">
+    <div id="chart-container">
         <button id="download-image">Download Image</button>
         <div id="chart"></div>
     </div>

@@ -1,7 +1,7 @@
 /* Body and general layout styles */
 #body-except-chart {
     font-family: Arial, sans-serif;
-    background-color: #f5f5f5;
+    background-color: #EEE9DA;
     margin: 0;
     padding: 0;
     display: flex;
@@ -11,9 +11,13 @@
     min-height: 100vh;
 }
 
+body {
+    background-color: #EEE9DA;
+}
+
 
 h1 {
-    color: #007BFF;
+    color: #6096B4;
     text-align: center;
     padding: 20px;
 }
@@ -37,15 +41,19 @@ input {
 
 button {
     padding: 10px 20px;
-    background-color: #007BFF;
+    background-color: #6096B4;
     color: #fff;
     border: none;
     border-radius: 3px;
     cursor: pointer;
 }
 
+#fillWholeCountry {
+    background-color: #6096B4;
+}
+
 #copyright-notice {
-    background-color: #ce1414;
+    background-color: #6096B4;
     color: #fff;
     font-size: 14px;
     font-weight: bold;
@@ -55,7 +63,7 @@ button {
 }
 
 #copyright-notice a {
-    color: #007BFF;
+    color: #00ff15;
     text-decoration: none;
 }
 
@@ -84,6 +92,7 @@ button {
 }
 
 #year-range-container input {
+    background-color: #ECCDB4;
     width: 100px;
     /* 调整输入框的宽度 */
     padding: 10px;
@@ -104,6 +113,7 @@ button {
 }
 
 #chart {
+    /* background-color: #ECCDB4; */
     width: 100%;
 }
 

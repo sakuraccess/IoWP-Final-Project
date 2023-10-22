@@ -1,7 +1,7 @@
 /* Body and general layout styles */
 body {
     font-family: Arial, sans-serif;
-    background-color: #f5f5f5;
+    background-color: #EEE9DA;
     margin: 0;
     padding: 0;
     display: flex;
@@ -74,4 +74,13 @@ form {
     border-radius: 3px;
     cursor: pointer;
     padding: 10px 20px;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #6096B4;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
 }

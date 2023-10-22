@@ -8,6 +8,7 @@ const map = L.map('map', {
 });
 
 let year = parseInt(localStorage.getItem('year'));
+let ifPressSetYear = false;
 
 const codesJSON = localStorage.getItem('codes');
 const municipalityCodes = JSON.parse(codesJSON);
@@ -183,10 +184,17 @@ async function showMap() {
             };
         });
 
+        ifPressSetYear = true;
     });
 
     searchButton.addEventListener('click', function (event) {
         event.preventDefault();
+
+        if (ifPressSetYear == false) {
+            alert("Please first select the year you want to view the data distribution.");
+            return;
+        }
+        
         const searchTerm = searchInput.value;
         const matchingFeature = findMatchingFeature(searchTerm);
 

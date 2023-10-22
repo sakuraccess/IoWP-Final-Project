@@ -160,8 +160,19 @@ document.getElementById('select-data-form').addEventListener('submit', async fun
         title: 'Population data for your specified area',
         height: 450,
         axisOptions: {
-            xAxisMode: "tick",
-            xIsSeries: true
+            x: {
+                type: "category",
+                label: "Month",
+                tickLabel: {
+                    color: "red", // 设置X轴标签的颜色
+                }
+            },
+            y: {
+                label: "Value",
+                tickLabel: {
+                    color: "blue", // 设置Y轴标签的颜色
+                }
+            },
         },
         lineOptions: {
             regionFill: 1,
@@ -176,7 +187,7 @@ document.getElementById('select-data-form').addEventListener('submit', async fun
         event.preventDefault();
         chart.export();
     });
-    
+
 });
 
 document.getElementById("to-map").addEventListener('click', function (event) {

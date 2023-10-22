@@ -1,56 +1,25 @@
 let datasetArray = [];
-// let contents = [];
 
 getDatasetArray();
-console.log(datasetArray);
-// let datasetID = 0;
+// console.log(datasetArray);
 
-// window.addEventListener('load', function () {
-//     // const savedDatasetID = localStorage.getItem('id');
-//     // if (savedDatasetID) {
-//     //     datasetID = parseInt(savedDatasetID);
-//     //     console.log(datasetID);
-//     // }
+if (datasetArray.length != 0) {
+    document.getElementById("data-list-container").style.display = "block";
+}
 
-//     const datasetArrayJSON = localStorage.getItem('datasetArray');
-//     if (datasetArrayJSON) {
-//         datasetArray = JSON.parse(datasetArrayJSON);
-//         console.log(datasetArray);
-//         // let datasetID = 0;
-//         for (const item of datasetArray) {
-//             addToDataList(item.dataset, item.municipalityName, item.yearRange);
-//         }
-//     }
-// });
 function getDatasetArray() {
-    // 读取 URL 参数
+
     const urlParams = new URLSearchParams(window.location.search);
     const source = urlParams.get("source");
 
     if (source == "map" || source == "emp") {
         const datasetArrayJSON = localStorage.getItem('datasetArray');
         const datasetArrayReload = JSON.parse(datasetArrayJSON);
-
-        // const contentsJSON = localStorage.getItem('contents');
-        // const contentsReload = JSON.parse(contentsJSON);
-        // console.log(datasetArrayReload);
-        // return;
-
         datasetArray = datasetArrayReload;
-        // contents = contentsReload;
-        // console.log(contentsReload);
         updataContents(datasetArrayReload);
-        // for (let i = 0; i < datasetArray.length; i++) {
-        //     const item = datasetArray[i];
-        //     addToDataList(item.dataset, item.municipalityName, item.yearRange, i);
-        // }
+
     }
 
-    // try {
-
-    // } catch (error) {
-    //     console.error(error);
-    // }
 }
 
 const clearListButton = document.getElementById("clear-list");
@@ -153,7 +122,6 @@ const savedMunicipalityName = localStorage.getItem('municipalityName');
 const inputElement = document.getElementById('municipality-name');
 if (inputElement) {
     inputElement.value = savedMunicipalityName;
-    // console.log("ok");
 }
 
 document.getElementById('select-data-form').addEventListener('submit', async function (event) {
@@ -198,8 +166,14 @@ document.getElementById('select-data-form').addEventListener('submit', async fun
 
     addToDataList(dataset, municipalityName, yearRange);
 
+    if (datasetArray.length != 0) {
+        document.getElementById("data-list-container").style.display = "block";
+    }
+
     // document.getElementById("to-map").style.display = "block";
 });
+
+
 
 function findMunicipality(municipalityName, municipalityNames) {
     const index = municipalityNames.findIndex((name) => {
@@ -216,11 +190,6 @@ function findMunicipality(municipalityName, municipalityNames) {
 function addToDataList(dataset, municipalityName, yearRange) {
     let currentID = datasetArray.length;
 
-
-    // if (datasetArray) {
-    //     currentID = datasetArray.length;
-    // }
-
     const newItem = {
         ID: currentID,
         dataset,
@@ -232,72 +201,90 @@ function addToDataList(dataset, municipalityName, yearRange) {
 
     const dataListContainer = document.getElementById("data-list-container");
 
-    // Create a new element to display the data
     const dataItem = document.createElement("div");
-    const content = `Data${currentID + 1}
-                        ${municipalityName}
-                        (${yearRange[0]}-${yearRange[yearRange.length - 1]}),
-                        ${dataset[0].mainActivity},
-                        ${dataset[0].sex},
-                        ${dataset[0].age}
-                        `;
-    dataItem.textContent = content;
-    // contents.push(content);
 
-    // Add a draggable attribute to the data item
+    const content = setPopupContent(dataset[0], currentID, municipalityName, yearRange);
+    dataItem.textContent = content;
+
     dataItem.setAttribute("draggable", true);
 
-    // Append the data item to the data list container
     dataListContainer.appendChild(dataItem);
 
-    // Add dragstart event listener to the data item
     dataItem.addEventListener("dragstart", function (event) {
         const datasetID = event.target.textContent.split("\n")[0].slice(4) - 1;
         event.dataTransfer.setData("ID", datasetID);
-        // console.log(datasetID);
     });
 
-    // datasetID++;
+}
+
+function setPopupContent(city, currentID, municipalityName, yearRange) {
+
+    const activityMap = {
+        'SSS': 'Total population',
+        '11+12': 'Labour force',
+        '11': 'Employed',
+        '12': 'Unemployed',
+        '21-99': 'Persons outside the labour force',
+        '21': '0-14 years old',
+        '22': 'Students, pupils',
+        '25': 'Conscripts, persons in non-military service',
+        '24+29': 'Pensioners',
+        '99': 'Other persons outside the labour force'
+    };
+
+    const genderMap = {
+        'SSS': 'All genders',
+        '1': 'Males',
+        '2': 'Females'
+    };
+
+    const ageMap = {
+        'SSS': 'All ages',
+        '0-17': '0 - 17',
+        '18-64': '18 - 64',
+        '65-': '65 -'
+    };
+
+    const activity = activityMap[city.mainActivity];
+    const gender = genderMap[city.sex];
+    const age = ageMap[city.age];
+
+    return `Data${currentID + 1}
+            ${municipalityName}
+            (${yearRange[0]}-${yearRange[yearRange.length - 1]}),
+            ${activity},
+            ${gender},
+            ${age}
+            `;
 }
 
 function updataContents(datasetArray) {
     const dataListContainer = document.getElementById("data-list-container");
 
-    // 清空 dataListContainer 中的所有子元素
     while (dataListContainer.firstChild) {
         dataListContainer.removeChild(dataListContainer.firstChild);
     }
 
-    // 创建一个新的 label 元素
     const labelElement = document.createElement("label");
 
-    // 设置 label 的 id 和 for 属性
     labelElement.id = "clear-list-label";
     labelElement.setAttribute("for", "clear-list");
-    labelElement.textContent = "Obtained data list"; // 设置标签的文本内容
+    labelElement.textContent = "Obtained data list";
 
     const button = document.createElement("button");
     button.id = "clear-list";
     button.textContent = "Clear list";
 
-    // 获取你想要添加标签的 div 元素
-    // const divElement = document.getElementById("your-div-id");
-
-    // 将 label 元素附加到 div 元素中
     dataListContainer.appendChild(labelElement);
     dataListContainer.appendChild(button);
 
     for (let i = 0; i < datasetArray.length; i++) {
         const dataItem = document.createElement("div");
         const item = datasetArray[i];
+
         const yearRange = item.yearRange;
-        dataItem.textContent = `Data${i + 1}
-                                ${item.municipalityName}
-                                (${yearRange[0]}-${yearRange[yearRange.length - 1]}),
-                                ${item.dataset[0].mainActivity},
-                                ${item.dataset[0].sex},
-                                ${item.dataset[0].age}
-                                `;;
+
+        dataItem.textContent = setPopupContent(item.dataset[0], i, item.municipalityName, yearRange);
         dataItem.setAttribute("draggable", true);
         dataListContainer.appendChild(dataItem);
 
@@ -308,21 +295,6 @@ function updataContents(datasetArray) {
     }
 }
 
-// document.getElementById("apply-chart").addEventListener("drop", function(event) {
-//     event.preventDefault();
-//     console.log("drop");
-
-//     const datasetID = event.dataTransfer.getData("ID");
-//     const targetDataset = datasetArray.find((eachDataset) => {
-//         return eachDataset.datasetID === parseInt(datasetID);
-//     });
-
-//     const municipalityName = targetDataset.municipalityName;
-//     const yearRange = targetDataset.yearRange;
-//     const dataset = targetDataset.dataset;
-//     applyChartView(dataset, municipalityName, yearRange);
-// });
-
 function allowDrop(event) {
     event.preventDefault();
 }
@@ -331,12 +303,9 @@ function handleDropChart(event) {
     event.preventDefault();
 
     const ID = event.dataTransfer.getData("ID");
-    // console.log(datasetArray);
     const targetDataset = datasetArray.find((eachDataset) => {
         return eachDataset.ID === parseInt(ID);
     });
-    // console.log(ID);
-    // console.log(targetDataset); 
 
     const municipalityName = targetDataset.municipalityName;
     const yearRange = targetDataset.yearRange;
@@ -374,7 +343,6 @@ function applyChartView(dataset, municipalityName, yearRange) {
     }
 
     const rawData = specificMunicipality.values;
-    // const neededValues = rawData.slice(stratYear - 1987, endYear - 1987 + 1);
     const neededValues = rawData.slice(yearRange[0] - 1987, yearRange[yearRange.length - 1] - 1987 + 1);
     // console.log(yearRange);
     const chartContainer = document.getElementById('chart');
@@ -426,32 +394,16 @@ function applyMapView(dataset, municipalityName) {
 
     localStorage.setItem('municipalityName', municipalityName);
 
-    // const datasetArrayJSON = JSON.stringify(datasetArray);
     localStorage.setItem('datasetArray', JSON.stringify(datasetArray));
-
-    // localStorage.setItem('contents', JSON.stringify(contents));
-
-    // const datasetArrayJSON2 = localStorage.getItem('datasetArray');
-    // const datasetArrayReload = JSON.parse(datasetArrayJSON2);
-    // console.log(datasetArrayReload);
-
-
-
-    // localStorage.setItem('id', datasetID);
 
     window.location.href = "./map.html";
 }
 
-// document.getElementById("to-map").addEventListener('click', function (event) {
-//     event.preventDefault();
-//     window.location.href = "./map.html";
-// });
+
 
 document.getElementById("to-emp").addEventListener('click', function (event) {
     event.preventDefault();
     localStorage.setItem('datasetArray', JSON.stringify(datasetArray));
-
-    // localStorage.setItem('contents', JSON.stringify(contents));
 
     window.location.href = "./emp.html";
 });

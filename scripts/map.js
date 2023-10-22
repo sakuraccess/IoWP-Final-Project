@@ -203,13 +203,7 @@ async function showMap(dataset) {
 
     document.getElementById("to-index").addEventListener('click', function (event) {
         event.preventDefault();
-        // localStorage.setItem('reload', 'true');
         window.location.href = "./index.html?source=map";
     });
-
-    // document.getElementById("to-emp").addEventListener('click', function (event) {
-    //     event.preventDefault();
-    //     window.location.href = "./emp.html";
-    // });
 
 }

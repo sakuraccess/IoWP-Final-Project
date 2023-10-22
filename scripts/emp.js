@@ -103,7 +103,7 @@ function getColor(value) {
 
 async function showMap() {
     const dataset = await getdata(municipalityCodes);
-    // console.log(dataset);
+
 
     const response = await fetch('https://geo.stat.fi/geoserver/wfs?service=WFS&version=2.0.0&request=GetFeature&typeName=tilastointialueet:kunta4500k&outputFormat=json&srsName=EPSG:4326');
     const mapData = await response.json();
@@ -111,15 +111,15 @@ async function showMap() {
     const geojsonLayer = L.geoJSON(mapData, {
         weight: 2,
         onEachFeature: function (feature, layer) {
-            // console.log(dataset);
+
             const municipalityName = feature.properties.nimi;
             const municipality = dataset.find((data) => data.municipalityName === municipalityName);
-            // console.log('Now', localStorage.getItem('municipalityName'));
+
 
             if (municipality) {
                 layer.on('click', function () {
                     localStorage.setItem('municipalityName', municipalityName);
-                    // console.log('Now', localStorage.getItem('municipalityName'));
+
                     let popupContent = setPopupContent(municipality);
                     layer.bindPopup(popupContent).openPopup();
                 });
@@ -239,8 +239,3 @@ function returnIndex(event) {
     event.preventDefault();
     window.location.href = "./index.html?source=emp";
 }
-
-// document.getElementById("to-map").addEventListener('click', function (event) {
-//     event.preventDefault();
-//     window.location.href = "./map.html";
-// });

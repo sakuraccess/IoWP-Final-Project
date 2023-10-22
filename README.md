@@ -17,9 +17,12 @@ This project focuses on the development of an interactive data visualization web
 
 #### A. Main Page - Specific Population Data and Chart View (index.html)
 1. To access the main page, open the `index.html` or visit the following link: [IoWP-Final-Project Main Page](https://sakuraccess.github.io/IoWP-Final-Project/).
-2. On the main page, follow the instructions to select the desired population data category. Click the `View the chart` button to display *Population by area, main type of activity, sex, age, and year* data for either the entire Finland or a specific municipality (data available from 1987 to 2021).
-3. Once the chart is displayed, use the `Go to map view of the whole country` button to switch to the national map view, providing information related to the selected data type. You can also click the `Download Image` button to save the map as an image file; your browser will prompt you to save the file.
-4. Explore the `Go to the national employment rate distribution map` button to switch to the national employment rate distribution map.
+
+2.	On the main page, follow the instructions to select the desired demographic data category. Click the `Fetch selected data` button to get *Population by region, main activity type, gender, age and year* data for the whole of Finland or for a specific municipality. Data span 1987 to 2021. The acquired data will be displayed in the *Obtained data list*. Click the `Clear List` button to clear the list.
+
+3.	Drag one of the obtained data in the list to `Apply chart view` or `Apply map view` to display chart view and map view (go to map.html). respectively. In chart view, you can also click the `Download Image` button to save the map as an SVG image file.
+
+4.	You can further explore the `Go to National Employment Rate Distribution Map` button and switch to the National Employment Rate Distribution Map. 
 
 #### B. Specific Population Data Page - National Map View (map.html)
 1. Start by selecting the desired year according to the provided instructions.
@@ -33,4 +36,3 @@ The usage of the National Employment Rate Distribution Map (emp.html) is similar
 ---
 
 Enjoy exploring the data and visualizations in this project!
-

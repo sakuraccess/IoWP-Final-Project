@@ -202,6 +202,7 @@ function addToDataList(dataset, municipalityName, yearRange) {
     const dataListContainer = document.getElementById("data-list-container");
 
     const dataItem = document.createElement("div");
+    dataItem.classList.add("list-data");
 
     const content = setPopupContent(dataset[0], currentID, municipalityName, yearRange);
     dataItem.textContent = content;
@@ -281,6 +282,7 @@ function updataContents(datasetArray) {
     for (let i = 0; i < datasetArray.length; i++) {
         const dataItem = document.createElement("div");
         const item = datasetArray[i];
+        dataItem.classList.add("list-data");
 
         const yearRange = item.yearRange;
 
@@ -398,8 +400,6 @@ function applyMapView(dataset, municipalityName) {
 
     window.location.href = "./map.html";
 }
-
-
 
 document.getElementById("to-emp").addEventListener('click', function (event) {
     event.preventDefault();

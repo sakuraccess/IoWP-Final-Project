@@ -107,7 +107,7 @@ button {
 }
 
 
-#chart-container {
+#chart-view {
     padding: 20px;
     display: none;
 }
@@ -136,4 +136,20 @@ button {
     border-radius: 3px;
     cursor: pointer;
     padding: 10px 20px;
+}
+
+.apply-container {
+    display: flex;
+    flex-direction: between-row;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 20px; 
+    /* height: 100vh; 
+    margin: 0 auto; 
+    max-width: 600px; */
+}
+
+#clear-list-label {
+    background-color: #b361d3;
 }

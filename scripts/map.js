@@ -129,7 +129,6 @@ async function showMap(dataset) {
         if (!yearIndex) {
             const popupContent = `
                 ${municipality.municipalityName}<br>
-                <button onclick="window.location.href='./index.html'">Chart view for this municipality</button>
             `;
             return popupContent;
         }
@@ -170,7 +169,6 @@ async function showMap(dataset) {
                 Age group: ${age}<br>
                 Activity: ${activity}<br>
                 Specified number of people: ${municipality.values[yearIndex]}<br>
-                <button onclick="window.location.href='./index.html'">Chart view for this municipality</button>
             `;
 
     }
@@ -205,7 +203,8 @@ async function showMap(dataset) {
 
     document.getElementById("to-index").addEventListener('click', function (event) {
         event.preventDefault();
-        window.location.href = "./index.html";
+        // localStorage.setItem('reload', 'true');
+        window.location.href = "./index.html?source=map";
     });
 
     // document.getElementById("to-emp").addEventListener('click', function (event) {

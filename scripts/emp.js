@@ -130,6 +130,7 @@ async function showMap() {
     }).addTo(map);
 
     function setPopupContent(municipality) {
+        // if (municipality === undefined) 
 
         const index = year - 1987;
         const municipalityName = municipality.municipalityName;
@@ -142,7 +143,6 @@ async function showMap() {
                 labourForce: ${labourForce}<br>
                 employed: ${employed}<br>
                 employmentRatio: ${employmentRatio}%<br>
-                <button onclick="window.location.href='./index.html'">Chart view for this municipality</button>
             `;
     }
 
@@ -232,8 +232,13 @@ async function showMap() {
 
 document.getElementById("to-index").addEventListener('click', function (event) {
     event.preventDefault();
-    window.location.href = "./index.html";
+    window.location.href = "./index.html?source=emp";
 });
+
+function returnIndex(event) {
+    event.preventDefault();
+    window.location.href = "./index.html?source=emp";
+}
 
 // document.getElementById("to-map").addEventListener('click', function (event) {
 //     event.preventDefault();

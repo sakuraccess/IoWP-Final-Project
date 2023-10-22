@@ -83,16 +83,51 @@
             
         </div> -->
 
-            <button type="submit" id="submit-data">View the chart</button>
+            <button type="submit" id="submit-data">Fetch selected data</button>
 
             <br><button id="to-map" style="display: none;">Go to map view of the whole country</button><br>
             <button id="to-emp">Go to the national employment rate distribution map</button>
         </form>
     </div>
 
-    <div id="chart-container">
+    <!-- <div id="chart-container">
         <button id="download-image">Download Image</button>
         <div id="chart"></div>
+    </div> -->
+    <!-- <label for="data-list-container">Data List</label> -->
+    
+    <div id="data-list-container">
+        <!-- <button>Data List</button> -->
+        <label id="clear-list-label" for="clear-list">Obtained data list</label>
+        <button id="clear-list">Clear list</button>
+        <!-- Right-side data list container -->
+    </div>
+
+    <div class="apply-container">
+        <div id="apply-chart" ondrop="handleDropChart(event)" ondragover="allowDrop(event)">
+            <!-- Apply chart view container -->
+            <button>Apply chart view</button>
+        </div>
+
+        <div id="apply-map" ondrop="handleDropMap(event)" ondragover="allowDrop(event)">
+            <!-- Apply map view container -->
+            <button>Apply map view</button>
+        </div>
+    </div>
+
+
+
+    <div id="chart-view">
+        <button id="download-image">Download Image</button>
+        <div id="chart"></div>
+    </div>
+
+    <div id="map-view">
+        <!-- Map view area -->
+    </div>
+
+    <div id="table-view">
+        <!-- Table view area (if needed) -->
     </div>
 
     <script src="./scripts/index.js"></script>

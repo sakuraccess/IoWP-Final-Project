@@ -2,14 +2,15 @@
 
 ## Project 2: Statistic Portal
 
-This project focuses on the development of an interactive data visualization web application that allows users to explore and analyze population data (by category) and employment rate data for different cities in Finland. The primary goal is to create a user-friendly interface for visualizing data through maps and charts.
+This project involves the development of an interactive data visualization web application that enables users to explore and analyze population (by category) and employment rate data for different cities in Finland. The focus of this project is to create a user-friendly interface for visualizing data on maps and charts.
 
 ---
 
 ### Tools Used
 
-- **Frappe Charts**: Utilized for creating interactive and visually appealing charts that effectively represent the data.
-- **Leaflet**: Used for rendering interactive maps in the web application, providing mapping capabilities for exploring geographic data.
+ - **Frappe Charts** are used to create interactive and visually appealing charts to represent data effectively.
+
+ - **Leaflet** is used to render interactive maps on web applications. It provides map functionality and allows users to explore geographically distributed data.
 
 ---
 
